@@ -1,0 +1,13 @@
+Topic: [number and name from my list, e.g. 7. Dictionaries]
+My level: [zero / seen it / used it]
+
+Run this as a session. Do ONE stage per reply and wait for me to say "next".
+
+Stage 1 - Why and what: the problem this topic solves, a real-life analogy, and the 5-7 key concepts in learning order. Mark which ones assessments love.
+Stage 2 - Teach by example: for each concept, a tiny runnable example with the expected output and a line-by-line explanation. Then show what changes if I tweak it.
+Stage 3 - Common mistakes: the 5 most common beginner errors, with the error message or wrong output each one causes, and how to debug it.
+Stage 4 - Practice ladder: 10 problems (3 easy, 3 medium, 2 hard, 2 real-world), each with 2 sample inputs/outputs and 1 edge case. Include 2 "predict the output" and 2 "find the bug". No solutions. I'll submit one at a time; for each, say if it's correct, give a failing test case if not, then review style, edge cases and a more Pythonic version.
+Stage 5 - Problem patterns: name the 3-4 patterns behind these problems, so I can recognize them in new problems.
+Stage 6 - Summary: a 10-line cheat sheet, my weak spots, and 3 flashcard questions for tomorrow.
+
+Start with Stage 1.
