@@ -1,0 +1,1161 @@
+
+LINEAR REGRESSION
+
+📘 TOPIC 1: LINEAR REGRESSION FUNDAMENTALS & PREDICTION
+1. What Is Linear Regression?
+
+Linear Regression is a supervised machine learning algorithm used to predict numerical or continuous values by learning a linear relationship between input features and an output.
+
+Examples
+Input	Predicted OutputExperience	Salary
+House size	House price
+Study hours	Marks
+Advertising budget	Sales
+Temperature	Electricity consumption
+
+Your Linear Regression.pdf introduces Linear Regression using salary data and shows how a best-fit line represents the relationship between input and output.
+
+2. Important Terms
+Feature XX
+
+Information given to the model.
+
+Example:
+
+X=Years of ExperienceX=\text{Years of Experience}
+Target yy
+
+The actual value we want the model to predict.
+
+Example:
+
+y=Actual Salaryy=\text{Actual Salary}
+Prediction y^\hat y
+
+The value predicted by the model.
+
+Example:
+
+Experience:
+
+x=5x=5
+
+Actual salary:
+
+y=₹42,000y=₹42,000
+
+Predicted salary:
+
+y^=₹40,000\hat y=₹40,000
+
+Remember:
+
+X→Model→y^\boxed{X\rightarrow Model\rightarrow\hat y}
+3. Simple Linear Regression Equation
+
+The fundamental equation is:
+
+y^=mx+b\boxed{\hat y=mx+b}
+
+In machine-learning notation:
+
+y^=θ0+θ1x\boxed{\hat y=\theta_0+\theta_1x}
+
+or:
+
+hθ(x)=θ0+θ1x\boxed{h_\theta(x)=\theta_0+\theta_1x}
+
+These equations represent the same idea.
+
+Mathematics	ML notation	Meaningmm	θ1\theta_1	Slope
+bb	θ0\theta_0	Intercept
+xx	xx	Input
+y^\hat y	hθ(x)h_\theta(x)	Prediction
+
+Your handwritten notes connect m,bm,b with θ1,θ0\theta_1,\theta_0 and the hypothesis function.
+
+4. Slope
+
+Slope tells us how much the predicted output changes when the input increases by one unit.
+
+Formula:
+
+m=y2−y1x2−x1\boxed{m=\frac{y_2-y_1}{x_2-x_1}}
+
+Suppose two points are:
+
+(2,25000)(2,25000)
+
+and:
+
+(4,35000)(4,35000)
+
+Then:
+
+m=35000−250004−2m=\frac{35000-25000}{4-2} m=100002m=\frac{10000}{2} m=5000\boxed{m=5000}
+Meaning
+
+For every additional year of experience, the predicted salary increases by ₹5,000.
+
+Types of Slope
+Slope	MeaningPositive	Prediction increases as XX increases
+Negative	Prediction decreases as XX increases
+Zero	Prediction remains constant
+5. Intercept
+
+The intercept is the predicted output when:
+
+x=0\boxed{x=0}
+
+Suppose:
+
+y^=5000x+15000\hat y=5000x+15000
+
+Then:
+
+θ0=15000\boxed{\theta_0=15000}
+
+The model predicts ₹15,000 when experience equals zero.
+
+Important Difference
+
+Slope changes the direction and steepness of the line.
+
+Intercept changes the vertical position of the line.
+
+6. What Does Linear Regression Learn?
+
+The model learns:
+
+θ0,θ1\boxed{\theta_0,\theta_1}
+
+These are called parameters.
+
+Parameters are values learned from training data.
+
+For example:
+
+y^=15000+5000x\hat y=15000+5000x
+
+means the model has learned:
+
+θ0=15000\theta_0=15000 θ1=5000\theta_1=5000
+7. Making a Prediction
+
+Suppose:
+
+y^=15000+5000x\hat y=15000+5000x
+
+For someone with 6 years of experience:
+
+x=6x=6
+
+Therefore:
+
+y^=15000+5000(6)\hat y=15000+5000(6) y^=15000+30000\hat y=15000+30000 y^=45000\boxed{\hat y=45000}
+
+The predicted salary is ₹45,000.
+
+8. Multiple Linear Regression
+
+Simple Linear Regression has one feature:
+
+y^=θ0+θ1x\boxed{\hat y=\theta_0+\theta_1x}
+
+Multiple Linear Regression has two or more features:
+
+y^=θ0+θ1x1+θ2x2+⋯+θpxp\boxed{ \hat y= \theta_0+\theta_1x_1+\theta_2x_2+\cdots+\theta_px_p }
+
+For house-price prediction, features could include:
+
+House size
+Number of bedrooms
+House age
+
+Example:
+
+y^=10+0.04x1+5x2−0.5x3\hat y=10+0.04x_1+5x_2-0.5x_3
+
+Suppose:
+
+x1=1500x_1=1500 x2=3x_2=3 x3=4x_3=4
+
+Then:
+
+y^=10+0.04(1500)+5(3)−0.5(4)\hat y=10+0.04(1500)+5(3)-0.5(4) =10+60+15−2=10+60+15-2 y^=83 lakh\boxed{\hat y=83\text{ lakh}}
+9. Interpretation of Multiple Regression Coefficients
+
+For:
+
+y^=10+0.04x1+5x2−0.5x3\hat y=10+0.04x_1+5x_2-0.5x_3 Coefficient	Interpretationθ1=0.04\theta_1=0.04	Price increases by 0.04 lakh per additional square foot
+θ2=5\theta_2=5	Price increases by 5 lakh per additional bedroom
+θ3=−0.5\theta_3=-0.5	Price decreases by 0.5 lakh per additional year
+Important
+
+Each coefficient is interpreted while keeping the other features constant.
+
+10. Why Is It Still Called Linear Regression?
+
+Even with multiple features:
+
+y^=θ0+θ1x1+θ2x2+⋯\hat y=\theta_0+\theta_1x_1+\theta_2x_2+\cdots
+
+it remains Linear Regression because the equation is linear in its coefficients.
+
+Also remember:
+
+Adding more features doesn't automatically make a model better.
+
+Irrelevant features can increase complexity and potentially hurt generalization.
+
+🎯 TOPIC 1 FINAL REVISION
+
+Remember:
+
+X→Model→y^\boxed{X\rightarrow Model\rightarrow\hat y}
+
+Simple Linear Regression:
+
+y^=θ0+θ1x\boxed{\hat y=\theta_0+\theta_1x}
+
+Multiple Linear Regression:
+
+y^=θ0+∑j=1pθjxj\boxed{\hat y=\theta_0+\sum_{j=1}^{p}\theta_jx_j}
+Most Important Ideas
+Linear Regression predicts numerical values.
+XX represents features.
+yy represents actual values.
+y^\hat y represents predictions.
+Slope tells us how prediction changes with input.
+Intercept is the prediction when input is zero.
+θ\theta values are learned parameters.
+Multiple Linear Regression uses multiple features.
+📘 TOPIC 2: RESIDUALS, ERROR, COST FUNCTION & GRADIENT DESCENT
+1. How Does a Model Know It Is Wrong?
+
+Suppose:
+
+Actual salary:
+
+y=50000y=50000
+
+Predicted salary:
+
+y^=47000\hat y=47000
+
+The residual is:
+
+e=y−y^\boxed{e=y-\hat y}
+
+Therefore:
+
+e=50000−47000e=50000-47000 e=3000\boxed{e=3000}
+
+The model underpredicted by ₹3,000.
+
+Your notes connect residual errors with the cost function and then with Gradient Descent.
+
+2. Understanding Residuals
+
+Using:
+
+e=y−y^e=y-\hat y Residual	MeaningPositive	Underprediction
+Negative	Overprediction
+Zero	Perfect prediction
+3. Why Can't We Simply Add Residuals?
+
+Suppose:
+
+e1=+10e_1=+10 e2=−10e_2=-10
+
+Adding them:
+
+10−10=010-10=0
+
+It looks like there was no error.
+
+But the model actually made two errors.
+
+Therefore, ML commonly uses:
+
+Absolute errors
+Squared errors
+4. Mean Absolute Error: MAE
+MAE=1n∑∣yi−y^i∣\boxed{ MAE=\frac{1}{n}\sum |y_i-\hat y_i| }
+
+Meaning:
+
+Average magnitude of prediction errors.
+
+Example residuals:
+
+[2,−4,6][2,-4,6]
+
+Then:
+
+MAE=2+4+63MAE=\frac{2+4+6}{3} MAE=4\boxed{MAE=4}
+Remember
+
+MAE uses absolute values.
+
+5. Mean Squared Error: MSE
+MSE=1n∑(yi−y^i)2\boxed{ MSE=\frac{1}{n}\sum(y_i-\hat y_i)^2 }
+
+For residuals:
+
+[2,−4,6][2,-4,6] MSE=22+(−4)2+623MSE=\frac{2^2+(-4)^2+6^2}{3} =4+16+363=\frac{4+16+36}{3} =563=\frac{56}{3} MSE≈18.67\boxed{MSE\approx18.67}
+Why Do We Square Errors?
+Positive and negative errors cannot cancel.
+Large errors get larger penalties.
+Squared errors are mathematically convenient for optimization.
+6. Root Mean Squared Error: RMSE
+RMSE=MSE\boxed{RMSE=\sqrt{MSE}}
+
+Using:
+
+MSE=18.67MSE=18.67 RMSE=18.67RMSE=\sqrt{18.67} RMSE≈4.32\boxed{RMSE\approx4.32}
+Comparison
+Metric	Meaning	UnitMAE	Average absolute error	Same as target
+MSE	Average squared error	Squared target units
+RMSE	Root of average squared error	Same as target
+Interview Point
+
+MSE and RMSE penalize large errors more strongly than MAE.
+
+7. Cost Function
+
+The cost function measures the model's overall training error.
+
+For Linear Regression:
+
+J(θ)=12n∑i=1n(y^i−yi)2\boxed{ J(\theta)= \frac{1}{2n} \sum_{i=1}^{n} (\hat y_i-y_i)^2 }
+
+With this definition:
+
+J=MSE2\boxed{J=\frac{MSE}{2}}
+Why 1/21/2?
+
+The 1/21/2 makes differentiation simpler because it cancels the 2 created when differentiating a square.
+
+Most Important Idea
+
+Cost function measures how bad the current model is.
+
+But the cost function doesn't automatically fix the model.
+
+For that, we need optimization.
+
+8. Gradient Descent
+
+Gradient Descent is an optimization algorithm that repeatedly adjusts model parameters to reduce the cost function.
+
+Think about walking down a mountain:
+
+Determine which direction is downhill.
+Take a step.
+Calculate the slope again.
+Take another step.
+Continue toward the lowest point.
+9. Gradient Descent Formula
+θnew=θold−α∂J∂θ\boxed{ \theta_{new} = \theta_{old} -\alpha \frac{\partial J}{\partial\theta} }
+
+Where:
+
+Symbol	Meaningθ\theta	Model parameter
+α\alpha	Learning rate
+JJ	Cost function
+∂J∂θ\frac{\partial J}{\partial\theta}	Gradient component
+Why Subtract?
+
+The gradient points toward increasing cost.
+
+We want decreasing cost.
+
+Therefore:
+
+Move opposite to the gradient\boxed{\text{Move opposite to the gradient}}
+10. What Is a Derivative?
+
+A derivative tells us how a function changes when its input changes.
+
+Example:
+
+f(x)=x2f(x)=x^2
+
+Derivative:
+
+f′(x)=2x\boxed{f'(x)=2x}
+
+The minimum occurs at:
+
+x=0\boxed{x=0}
+11. Numerical Gradient Descent Example
+
+Suppose:
+
+J(θ)=θ2J(\theta)=\theta^2
+
+Initial:
+
+θ=4\theta=4
+
+Learning rate:
+
+α=0.1\alpha=0.1
+
+Derivative:
+
+dJdθ=2θ\frac{dJ}{d\theta}=2\theta
+
+At:
+
+θ=4\theta=4
+
+Gradient:
+
+2(4)=82(4)=8
+
+Update:
+
+θnew=4−0.1(8)\theta_{new}=4-0.1(8) θnew=3.2\boxed{\theta_{new}=3.2}
+
+Before:
+
+J(4)=16J(4)=16
+
+After:
+
+J(3.2)=10.24J(3.2)=10.24
+
+Therefore:
+
+16→10.24\boxed{16\rightarrow10.24}
+
+Cost decreased.
+
+That is Gradient Descent.
+
+12. Learning Rate
+
+Learning rate:
+
+α\boxed{\alpha}
+
+controls the size of each update.
+
+Learning Rate	Possible ResultToo small	Very slow convergence
+Suitable	Stable progress
+Too large	Overshooting or divergence
+13. Convergence
+
+Convergence means Gradient Descent approaches a stable solution.
+
+Example:
+
+Iteration 1 → Cost = 100
+Iteration 2 → Cost = 60
+Iteration 3 → Cost = 35
+Iteration 4 → Cost = 20
+Iteration 5 → Cost = 12
+...
+
+
+The decreasing cost suggests the model parameters are improving.
+
+Your handwritten notes illustrate the cost curve, minimum, convergence and learning rate.
+
+14. Linear Regression Gradients
+
+Intercept gradient:
+
+∂J∂θ0=1n∑(y^i−yi)\boxed{ \frac{\partial J}{\partial\theta_0} = \frac1n\sum(\hat y_i-y_i) }
+
+Slope gradient:
+
+∂J∂θ1=1n∑(y^i−yi)xi\boxed{ \frac{\partial J}{\partial\theta_1} = \frac1n\sum(\hat y_i-y_i)x_i }
+
+Then:
+
+θj:=θj−α∂J∂θj\boxed{ \theta_j:= \theta_j-\alpha \frac{\partial J}{\partial\theta_j} }
+
+All gradients must be calculated using the same current parameter values before updating them.
+
+🎯 TOPIC 2 FINAL REVISION
+
+Remember this chain:
+
+Prediction→Residual→Cost→Gradient→Parameter Update→Lower Cost\boxed{ Prediction \rightarrow Residual \rightarrow Cost \rightarrow Gradient \rightarrow Parameter\ Update \rightarrow Lower\ Cost }
+
+Cost Function = Measures mistakes
+
+Gradient Descent = Changes parameters to reduce mistakes
+
+📘 TOPIC 3: REGRESSION MODEL EVALUATION
+1. Why Evaluate a Model?
+
+Training a model isn't enough.
+
+We need to know:
+
+How good are its predictions?
+
+Important regression metrics include:
+
+MAE
+MSE
+RMSE
+R²
+Adjusted R²
+2. MAE
+MAE=1n∑∣yi−y^i∣\boxed{ MAE=\frac1n\sum |y_i-\hat y_i| }
+
+MAE tells us the average absolute prediction error.
+
+Lower MAE is generally better when comparing models on the same problem and scale.
+
+3. MSE
+MSE=1n∑(yi−y^i)2\boxed{ MSE=\frac1n\sum(y_i-\hat y_i)^2 }
+
+MSE squares errors.
+
+Therefore, large prediction mistakes receive greater penalties.
+
+4. RMSE
+RMSE=MSE\boxed{RMSE=\sqrt{MSE}}
+
+RMSE has an important advantage:
+
+It returns the error to the same units as the target.
+
+For example, if salary is measured in rupees, RMSE is also expressed in rupees.
+
+5. MAE vs MSE vs RMSE
+Metric	Error used	UnitsMAE	Absolute	Original
+MSE	Squared	Squared
+RMSE	Squared then square root	Original
+6. R² Score
+
+R² is called the Coefficient of Determination.
+
+Formula:
+
+R2=1−SSESST\boxed{ R^2=1-\frac{SSE}{SST} }
+7. Understanding SST
+
+SST = Total Sum of Squares
+
+SST=∑(yi−yˉ)2\boxed{ SST=\sum(y_i-\bar y)^2 }
+
+It measures total squared variation of actual target values around their mean.
+
+8. Understanding SSE
+
+SSE = Sum of Squared Errors
+
+SSE=∑(yi−y^i)2\boxed{ SSE=\sum(y_i-\hat y_i)^2 }
+
+It measures the model's total squared prediction error.
+
+9. R² Example
+
+Suppose:
+
+SST=1000SST=1000
+
+and:
+
+SSE=200SSE=200
+
+Then:
+
+R2=1−2001000R^2=1-\frac{200}{1000} R2=1−0.2R^2=1-0.2 R2=0.8\boxed{R^2=0.8}
+
+Interpretation:
+
+The model achieves an 80% reduction in squared prediction error compared with predicting the target mean.
+
+10. Understanding R² Values
+R²	Meaning1	Perfect predictions
+0.9	90% reduction in squared error relative to mean baseline
+0.5	50% reduction
+0	Same squared error as mean baseline
+Negative	Worse than mean baseline
+Important
+R2=0.90R^2=0.90
+
+does NOT mean:
+
+Model has 90% accuracy.
+
+R² is not a classification accuracy percentage.
+
+Your handwritten notes cover R² and Adjusted R² on the performance-metrics section.
+
+Important Correction to Remember
+
+Although the handwritten note says R² is always positive, R² can actually be negative.
+
+A negative R² indicates that the model's squared-error performance is worse than simply predicting the mean.
+
+11. Problem With Ordinary R²
+
+Suppose:
+
+Model	Features	Training R²A	2	0.85
+B	10	0.86
+
+Model B uses eight additional features for only a small increase in training R².
+
+Does that automatically mean Model B is better?
+
+No.
+
+In nested ordinary least-squares models with an intercept evaluated on the same training observations, adding predictors cannot decrease training R².
+
+12. Adjusted R²
+
+Adjusted R² adds a predictor-count penalty.
+
+Radj2=1−(1−R2)n−1n−p−1\boxed{ R^2_{adj} = 1-(1-R^2) \frac{n-1}{n-p-1} }
+
+Where:
+
+nn = number of observations
+pp = number of predictors excluding intercept
+R2R^2 = ordinary R²
+
+The standard formula requires:
+
+n>p+1\boxed{n>p+1}
+13. Adjusted R² Example
+
+Suppose:
+
+R2=0.90R^2=0.90 n=100n=100 p=4p=4
+
+Then:
+
+Radj2=1−(1−0.90)9995R^2_{adj} = 1-(1-0.90)\frac{99}{95} Radj2≈0.8958R^2_{adj}\approx0.8958 Radj2≈0.8958\boxed{R^2_{adj}\approx0.8958}
+14. R² vs Adjusted R²
+R²	Adjusted R²Measures fit	Measures fit with predictor-count penalty
+No feature-count penalty	Penalizes extra predictors
+Cannot decrease when adding predictors in nested training OLS	Can decrease
+Can be negative	Can be negative
+Core Concept
+
+Adjusted R² increases only when improvement in training fit is sufficient to overcome the complexity penalty.
+
+But remember:
+
+Good R² or Adjusted R² does not automatically guarantee good performance on unseen data.
+
+🎯 TOPIC 3 FINAL REVISION
+
+Remember:
+
+R2=1−SSESST\boxed{ R^2=1-\frac{SSE}{SST} }
+
+and:
+
+Radj2=1−(1−R2)n−1n−p−1\boxed{ R^2_{adj} = 1-(1-R^2)\frac{n-1}{n-p-1} }
+
+Think:
+
+MAE/MSE/RMSE → How large are my errors?
+
+R² → How good am I relative to predicting the mean?
+
+Adjusted R² → Is additional training fit worth the additional predictors?
+
+📘 TOPIC 4: OVERFITTING, UNDERFITTING, GENERALIZATION, BIAS & VARIANCE
+1. The Real Goal of Machine Learning
+
+The goal isn't simply:
+
+Perform extremely well on training data.
+
+The actual goal is:
+
+Learn patterns that generalize to unseen data\boxed{ \text{Learn patterns that generalize to unseen data} }
+2. Underfitting
+
+Underfitting occurs when the model fails to capture important patterns in the data.
+
+Typical pattern:
+
+Poor Training Performance+Poor Test Performance\boxed{ Poor\ Training\ Performance + Poor\ Test\ Performance }
+Exam Analogy
+
+Imagine a student studies only a few basic formulas.
+
+Result:
+
+Poor practice performance
+Poor examination performance
+
+The student hasn't learned enough.
+
+3. Overfitting
+
+Overfitting happens when the model fits training-specific details too closely and performs poorly on new data.
+
+Typical pattern:
+
+Excellent Training Performance+Much Worse Test Performance\boxed{ Excellent\ Training\ Performance + Much\ Worse\ Test\ Performance }
+Exam Analogy
+
+A student memorizes practice questions without understanding the concepts.
+
+Result:
+
+Excellent practice score
+Poor performance on unfamiliar exam questions
+4. Good Fitting
+
+A good model learns useful patterns that transfer to new observations.
+
+Typical pattern:
+
+Good Training Performance+Good Test Performance\boxed{ Good\ Training\ Performance + Good\ Test\ Performance }
+Example
+Model	Training R²	Test R²	InterpretationA	0.98	0.55	Likely overfitting
+B	0.45	0.43	Possible underfitting
+C	0.92	0.90	Good generalization
+
+These are illustrative patterns, not universal thresholds.
+
+Your notes contain the same idea by comparing training and testing performance for overfitting, good fitting and underfitting.
+
+5. Bias
+
+Bias represents systematic error associated with assumptions made by the learning method.
+
+High Bias
+
+A model is too restrictive to capture the important pattern.
+
+High bias is often associated with:
+
+Underfitting\boxed{Underfitting}
+Example
+
+Suppose the true relationship is strongly curved.
+
+You try fitting only a simple straight line.
+
+The model may not be flexible enough.
+
+6. Variance
+
+Variance measures how sensitive the learned model is to changes in the training dataset.
+
+High Variance
+
+The model changes substantially when trained on different samples.
+
+High variance is commonly associated with:
+
+Overfitting\boxed{Overfitting}
+7. Bias-Variance Tradeoff
+Complexity	Bias	Variance	RiskToo low	High	Often low	Underfitting
+Suitable	Balanced	Manageable	Better generalization
+Too high	Often low	High	Overfitting
+
+For squared-error regression:
+
+Expected Error=Bias2+Variance+Irreducible Noise\boxed{ Expected\ Error = Bias^2+Variance+Irreducible\ Noise }
+
+Prediction error can therefore arise from:
+
+Systematic model limitations
+Sensitivity to training data
+Unavoidable noise
+Most Important Lesson
+
+Our goal is not simply minimizing bias.
+
+Our goal is not simply minimizing variance.
+
+Our goal is:
+
+Minimize expected prediction error\boxed{\text{Minimize expected prediction error}}
+8. Fixing Underfitting
+
+Possible approaches:
+
+Use a more flexible model.
+Add useful features.
+Reduce excessive regularization.
+Improve feature engineering.
+Make sure optimization has converged.
+
+Simple memory:
+
+Underfitting → Consider increasing useful flexibility.
+
+9. Fixing Overfitting
+
+Possible approaches:
+
+Reduce unnecessary model complexity.
+Apply regularization.
+Remove irrelevant features.
+Collect more representative training data.
+Use cross-validation.
+Prevent data leakage.
+
+Simple memory:
+
+Overfitting → Control unnecessary flexibility.
+
+10. Training vs Validation/Test Performance
+
+Training performance tells us:
+
+How well did the model fit data used during learning?
+
+Validation/test performance tells us:
+
+How well does the trained model perform on unseen data?
+
+That's why:
+
+High Training R2≠Guaranteed Good Model\boxed{ High\ Training\ R^2 \neq Guaranteed\ Good\ Model }
+
+Generalization matters more than memorizing the training dataset.
+
+🎯 TOPIC 4 FINAL REVISION
+Underfitting
+High Bias\boxed{High\ Bias}
+
+Typically poor train + poor test performance.
+
+Overfitting
+High Variance\boxed{High\ Variance}
+
+Typically excellent train + substantially worse test performance.
+
+Good Model
+Useful Pattern Learning+Good Generalization\boxed{ Useful\ Pattern\ Learning + Good\ Generalization }
+
+Final goal:
+
+Perform reliably on unseen data\boxed{\text{Perform reliably on unseen data}}
+📘 TOPIC 5: REGULARIZATION, RIDGE, LASSO, LAMBDA & FEATURE SCALING
+1. What Is Regularization?
+
+Regularization is used to control model complexity by adding a penalty to the training objective.
+
+Without regularization:
+
+Minimize Prediction Error\boxed{\text{Minimize Prediction Error}}
+
+With regularization:
+
+Minimize Prediction Error + Penalty\boxed{ \text{Minimize Prediction Error + Penalty} }
+
+The penalty discourages unnecessarily large coefficients.
+
+This is especially useful when trying to control model complexity and reduce overfitting.
+
+Your handwritten notes introduce Ridge and Lasso after the discussion of overfitting and underfitting.
+
+2. Ridge Regression
+
+Ridge uses:
+
+L2 Regularization\boxed{L2\ Regularization}
+
+A common objective is:
+
+JRidge=12n∑(yi−y^i)2+λ∑j=1pθj2\boxed{ J_{Ridge} = \frac{1}{2n} \sum(y_i-\hat y_i)^2 + \lambda \sum_{j=1}^{p}\theta_j^2 }
+
+Ridge penalizes the squares of coefficients.
+
+3. Ridge Penalty Example
+
+Suppose:
+
+θ1=3\theta_1=3 θ2=−4\theta_2=-4
+
+Then the unscaled L2 penalty is:
+
+32+(−4)23^2+(-4)^2 =9+16=9+16 L2=25\boxed{L2=25}
+
+The actual regularization term includes λ\lambda:
+
+λ(25)\lambda(25)
+4. What Does Ridge Do?
+
+Ridge generally:
+
+Shrinks coefficients toward zero
+Does not normally make them exactly zero
+Can stabilize coefficients
+Is useful when predictors are correlated
+Controls complexity without automatically eliminating features
+Memory Trick
+
+Ridge = Reduce coefficients
+
+5. Lasso Regression
+
+Lasso uses:
+
+L1 Regularization\boxed{L1\ Regularization}
+
+A common objective is:
+
+JLasso=12n∑(yi−y^i)2+λ∑j=1p∣θj∣\boxed{ J_{Lasso} = \frac{1}{2n} \sum(y_i-\hat y_i)^2 + \lambda \sum_{j=1}^{p}|\theta_j| }
+
+Lasso penalizes the absolute values of coefficients.
+
+6. Lasso Penalty Example
+
+Suppose:
+
+θ1=3\theta_1=3 θ2=−4\theta_2=-4
+
+Then:
+
+∣3∣+∣−4∣|3|+|-4| =3+4=3+4 L1=7\boxed{L1=7}
+
+Again, this is the unscaled penalty.
+
+The regularization term includes:
+
+λ(7)\lambda(7)
+7. Lasso and Feature Selection
+
+An important property of Lasso is that it can make some coefficients exactly zero.
+
+Suppose originally:
+
+y^=10+5x1+3x2+2x3\hat y = 10+5x_1+3x_2+2x_3
+
+After Lasso, an illustrative result might be:
+
+y^=10+4.5x1+2.8x2+0x3\hat y = 10+4.5x_1+2.8x_2+0x_3
+
+Therefore:
+
+y^=10+4.5x1+2.8x2\boxed{ \hat y=10+4.5x_1+2.8x_2 }
+
+Feature x3x_3 no longer contributes to the prediction.
+
+Therefore, Lasso can perform automatic feature selection.
+
+Memory Trick
+
+Lasso = Reduce coefficients and Leave some Out
+
+8. Ridge vs Lasso
+Property	Ridge	LassoRegularization	L2	L1
+Penalty	Squared coefficients	Absolute coefficients
+Shrinks coefficients	Yes	Yes
+Makes coefficients exactly zero	Generally no	Can
+Automatic feature selection	Generally no	Yes
+Correlated predictors	Often distributes coefficients	May select some and suppress others
+Controls complexity	Yes	Yes
+9. What Is Lambda?
+
+Lambda:
+
+λ\boxed{\lambda}
+
+represents regularization strength.
+
+Lambda = 0
+
+No regularization penalty.
+
+Small Lambda
+
+Weak regularization.
+
+Coefficients are less strongly constrained.
+
+Large Lambda
+
+Strong regularization.
+
+Coefficients are pushed more strongly toward smaller values.
+
+Very Large Lambda
+
+The model may become overly restricted and underfit.
+
+10. Lambda Summary
+Lambda	Effect00	No penalty
+Small	Weak shrinkage
+Moderate	May improve generalization
+Very large	May cause underfitting
+
+So:
+
+λ↑⇒Regularization Strength↑\boxed{ \lambda\uparrow \Rightarrow Regularization\ Strength\uparrow }
+
+But increasing λ\lambda indefinitely is not better.
+
+11. How Do We Choose Lambda?
+
+Use:
+
+Validation data
+Cross-validation
+
+We choose λ\lambda based on held-out performance, not training error alone.
+
+This matters because the goal is good performance on unseen data.
+
+12. Feature Scaling
+
+Feature scaling is particularly important with Ridge and Lasso.
+
+Suppose:
+
+Feature	Typical valueHouse size	2000
+Bedrooms	3
+
+These features have very different numerical scales.
+
+Because Ridge and Lasso penalize coefficient magnitudes, feature units and scales influence how the penalty acts on coefficients.
+
+Therefore, features are commonly standardized.
+
+13. Standardization
+
+Formula:
+
+z=x−μσ\boxed{ z=\frac{x-\mu}{\sigma} }
+
+Where:
+
+xx = original value
+μ\mu = mean
+σ\sigma = standard deviation
+zz = standardized value
+
+The goal is to put features onto comparable scales.
+
+14. Critical Data-Leakage Rule
+
+Never calculate preprocessing information using the complete dataset before evaluation.
+
+Instead:
+
+Step 1
+
+Split the data.
+
+Step 2
+
+Fit the scaler only on training data.
+
+Step 3
+
+Transform training data.
+
+Step 4
+
+Use the same fitted scaler to transform validation/test data.
+
+In scikit-learn, this is conveniently handled with tools such as StandardScaler inside a Pipeline.
+
+The principle is:
+
+Training Data→Fit Scaler\boxed{ Training\ Data \rightarrow Fit\ Scaler }
+
+then:
+
+Same Scaler→Validation/Test Data\boxed{ Same\ Scaler \rightarrow Validation/Test\ Data }
+
+This prevents data leakage.
+
+15. Complete Regularization Story
+
+Start with a model:
+
+y^=θ0+θ1x1+⋯+θpxp\hat y = \theta_0+\theta_1x_1+\cdots+\theta_px_p
+
+If unnecessary complexity contributes to poor generalization, we can introduce a penalty.
+
+Ridge
+L2=∑θj2\boxed{L2=\sum\theta_j^2}
+
+Primarily encourages coefficient shrinkage.
+
+Lasso
+L1=∑∣θj∣\boxed{L1=\sum|\theta_j|}
+
+Encourages shrinkage and can make some coefficients zero.
+
+Lambda
+λ\boxed{\lambda}
+
+determines the penalty strength.
+
+Scaling
+z=x−μσ\boxed{z=\frac{x-\mu}{\sigma}}
+
+helps place features on comparable scales.
+
+🎯 TOPIC 5 FINAL REVISION
+
+Remember these four ideas:
+
+1. Regularization
+Error+Penalty\boxed{Error+Penalty}
+2. Ridge
+L2=∑θj2\boxed{L2=\sum\theta_j^2}
+
+Shrinks coefficients.
+
+3. Lasso
+L1=∑∣θj∣\boxed{L1=\sum|\theta_j|}
+
+Shrinks coefficients and can make some exactly zero.
+
+4. Lambda
+λ↑⇒Regularization↑\boxed{ \lambda\uparrow \Rightarrow Regularization\uparrow }
+
+But excessive regularization can lead to underfitting.
+
+🧠 YOUR NEW 5-TOPIC REVISION ORDER
+
+You can now treat each section above as an independent chapter:
+
+📘 Topic 1
+
+Linear Regression Fundamentals & Prediction
+
+Data → Features → Linear Regression → Slope + Intercept → Prediction → Multiple Regression
+
+📘 Topic 2
+
+Residuals, Cost Function & Gradient Descent
+
+Prediction → Residual → MAE/MSE/RMSE → Cost → Gradient → Parameter Update → Lower Cost
+
+📘 Topic 3
+
+Regression Model Evaluation
+
+MAE/MSE/RMSE → SSE/SST → R² → Adjusted R²
+
+📘 Topic 4
+
+Overfitting, Underfitting, Generalization & Bias-Variance
+
+Train/Test Performance → Underfitting → Overfitting → Bias → Variance → Generalization
+
+📘 Topic 5
+
+Regularization, Ridge, Lasso & Feature Scaling
+
+Overfitting → Regularization → Ridge/L2 → Lasso/L1 → Lambda → Scaling → Leakage Prevention
+
+🔗 One master connection to remember
+1. Predict→2. Learn→3. Evaluate→4. Generalize→5. Regularize\boxed{ \text{1. Predict} \rightarrow \text{2. Learn} \rightarrow \text{3. Evaluate} \rightarrow \text{4. Generalize} \rightarrow \text{5. Regularize} }
+
+That gives you five completely separate revision units, while still preserving the conceptual coverage of the original nine lessons.
