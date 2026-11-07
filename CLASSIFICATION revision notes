@@ -1,0 +1,1675 @@
+📘 COMPLETE MACHINE LEARNING CLASSIFICATION REVISION NOTES
+Beginner-Friendly | Topic-Wise | Formulas | Examples | Exam Preparation
+
+Aryan, these are your complete revision notes for all six topics we have studied from your classification notes.
+
+I've organized them so that even if you read them after one month, you can understand the concepts without having to relearn everything.
+
+Each topic contains:
+
+✅ What is it?
+✅ Why do we use it?
+✅ How does it work?
+✅ Important formulas with explanations
+✅ Simple numerical examples
+✅ Important concepts and parameters
+✅ Exam and interview questions
+✅ Common mistakes
+✅ Quick revision points
+🟢 TOPIC 1: LOGISTIC REGRESSION
+1. What Is Logistic Regression?
+
+Logistic Regression is a supervised machine learning algorithm mainly used for classification.
+
+It predicts the probability that an observation belongs to a particular class.
+
+Example
+
+Suppose we want to predict whether a customer will leave a company.
+
+This is called Customer Churn Prediction.
+
+We define:
+
+0 = Customer will not leave.
+1 = Customer will leave.
+
+The model might predict:
+
+P(Churn)=0.85P(Churn)=0.85
+
+This means the estimated probability of churn is 85%.
+
+If our classification threshold is 0.5:
+
+0.85>0.50.85>0.5
+
+Final prediction = 1 (Churn).
+
+Remember
+
+Logistic Regression first calculates a probability and then uses a threshold to predict a class.
+
+2. Why Not Use Linear Regression?
+
+Linear Regression predicts unrestricted numerical values.
+
+For example:
+
+y=mx+cy=mx+c
+
+Its output could be:
+
+-2
+0.5
+1.8
+100
+
+But probabilities must lie between 0 and 1.
+
+Therefore, Logistic Regression uses a sigmoid function to transform a linear score into a probability.
+
+3. Sigmoid Function
+Formula
+σ(z)=11+e−z\boxed{\sigma(z)=\frac{1}{1+e^{-z}}}
+
+Where:
+
+zz = Linear score
+e≈2.718e\approx2.718
+σ(z)\sigma(z) = Probability between 0 and 1
+
+The linear score is:
+
+z=w1x1+w2x2+⋯+wnxn+b\boxed{z=w_1x_1+w_2x_2+\cdots+w_nx_n+b}
+
+Where:
+
+ww = Weights
+xx = Input features
+bb = Bias
+Numerical Example
+
+Suppose:
+
+z=2z=2
+
+Then:
+
+σ(2)=11+e−2\sigma(2)=\frac{1}{1+e^{-2}} σ(2)≈0.8808\boxed{\sigma(2)\approx0.8808}
+
+The model predicts approximately 88.08% probability of class 1.
+
+Important Sigmoid Values
+z	Sigmoid Output-5	0.0067
+-2	0.1192
+0	0.5000
+2	0.8808
+5	0.9933
+
+Memory Trick:
+
+Large positive z → Probability close to 1
+Large negative z → Probability close to 0
+z = 0 → Probability = 0.5
+4. Classification Threshold
+
+A threshold converts probability into a class.
+
+With threshold = 0.5:
+
+y^={1if P≥0.50if P<0.5\hat y= \begin{cases} 1 & \text{if } P\geq0.5\\ 0 & \text{if } P<0.5 \end{cases}
+
+Example:
+
+Probability	Predicted Class0.20	0
+0.45	0
+0.50	1
+0.75	1
+0.95	1
+
+The threshold can be adjusted depending on the problem.
+
+5. Log Loss
+
+Log Loss measures how wrong the predicted probabilities are.
+
+The goal during training is to minimize this loss.
+
+Formula
+L=−[ylog⁡(p)+(1−y)log⁡(1−p)]\boxed{L=-[y\log(p)+(1-y)\log(1-p)]}
+
+Where:
+
+yy = Actual class
+pp = Predicted probability of class 1
+LL = Loss
+Example
+
+Actual class:
+
+y=1y=1
+
+Predicted probability:
+
+p=0.9p=0.9
+
+Then:
+
+L=−log⁡(0.9)L=-\log(0.9) L≈0.105\boxed{L\approx0.105}
+
+This is a small loss because the prediction is good.
+
+But if:
+
+p=0.01p=0.01
+
+Then:
+
+L=−log⁡(0.01)L=-\log(0.01) L≈4.605\boxed{L\approx4.605}
+
+This is a large loss because the model was confidently wrong.
+
+Remember
+
+Correct and confident prediction → Low Log Loss
+
+Incorrect and confident prediction → High Log Loss
+
+6. How Does Logistic Regression Learn?
+
+During training:
+
+Initialize weights.
+Calculate the linear score.
+Apply sigmoid.
+Calculate Log Loss.
+Update weights using an optimization algorithm.
+Repeat until a stopping condition is reached.
+
+Gradient descent is one possible optimization method.
+
+The goal is to minimize the training objective.
+
+7. Important Concepts
+Concept	MeaningSigmoid	Converts linear score into probability
+Weight	Controls feature influence
+Bias	Shifts the decision boundary
+Threshold	Converts probability into class
+Log Loss	Measures probability prediction error
+Optimization	Finds suitable model parameters
+Regularization	Helps control overfitting
+8. Python Revision
+from sklearn.linear_model import LogisticRegression
+
+X = [[1], [2], [3], [4], [5], [6]]
+y = [0, 0, 0, 1, 1, 1]
+
+model = LogisticRegression()
+
+model.fit(X, y)
+
+print(model.predict([[5]]))
+print(model.predict_proba([[5]]))
+
+
+Remember:
+
+fit() → Train
+predict() → Predict class
+predict_proba() → Predict class probabilities
+⭐ Important Exam Questions
+
+Q1. Why is Logistic Regression used for classification?
+
+Because it estimates probabilities that can be converted into classes.
+
+Q2. What is the range of sigmoid?
+
+0<σ(z)<10<\sigma(z)<1
+
+Q3. Which loss function is commonly used?
+
+Binary Cross-Entropy or Log Loss.
+
+Q4. What is the default classification threshold in standard binary Scikit-learn Logistic Regression?
+
+Usually 0.5.
+
+Q5. Does Logistic Regression always produce a linear decision boundary?
+
+Standard binary Logistic Regression produces a linear decision boundary in its input feature space.
+
+✅ Topic 1: One-Minute Revision
+
+Logistic Regression is a supervised classification algorithm. It calculates a linear score, converts it into a probability using sigmoid, and applies a threshold to predict a class. It commonly learns its parameters by minimizing Log Loss, often with regularization.
+
+🟢 TOPIC 2: CLASSIFICATION EVALUATION METRICS
+1. Why Do We Need Evaluation Metrics?
+
+After training a classification model, we need to check how well it predicts unseen data.
+
+For example:
+
+A model predicts whether patients have a disease.
+
+Simply knowing that it achieves 90% accuracy may not be enough.
+
+We also need to know:
+
+How many sick patients were correctly identified?
+How many healthy patients were incorrectly flagged?
+How many sick patients were missed?
+
+These questions are answered using classification evaluation metrics.
+
+2. Confusion Matrix
+
+A confusion matrix compares actual classes with predicted classes.
+
+There are four outcomes:
+
+Term	Actual	Predicted	MeaningTP	1	1	Correct positive
+TN	0	0	Correct negative
+FP	0	1	Incorrect positive
+FN	1	0	Incorrect negative
+Example
+
+Suppose:
+
+TP = 40
+TN = 45
+FP = 5
+FN = 10
+
+Confusion matrix:
+
+Actual / Predicted	Positive	NegativePositive	TP = 40	FN = 10
+Negative	FP = 5	TN = 45
+
+Total observations:
+
+40+45+5+10=10040+45+5+10=100
+Memory Trick
+True = Correct
+False = Incorrect
+Positive = Predicted class 1
+Negative = Predicted class 0
+3. Accuracy
+
+Accuracy measures overall correctness.
+
+Formula
+Accuracy=TP+TNTP+TN+FP+FN\boxed{Accuracy=\frac{TP+TN}{TP+TN+FP+FN}}
+Example
+Accuracy=40+45100Accuracy=\frac{40+45}{100} Accuracy=85%\boxed{Accuracy=85\%}
+Meaning
+
+85 out of 100 predictions were correct.
+
+Important
+
+Accuracy can be misleading when the dataset is imbalanced.
+
+Example:
+
+990 healthy patients
+10 sick patients
+
+A model predicting everyone as healthy achieves 99% accuracy but identifies no sick patients.
+
+4. Precision
+
+Precision measures how many predicted positives are actually positive.
+
+Formula
+Precision=TPTP+FP\boxed{Precision=\frac{TP}{TP+FP}}
+Example
+Precision=4040+5Precision=\frac{40}{40+5} Precision=88.89%\boxed{Precision=88.89\%}
+Meaning
+
+Out of 45 patients predicted to have the disease, 40 actually have it.
+
+When Is Precision Important?
+
+When False Positives are costly.
+
+Example:
+
+Spam detection.
+
+An important email incorrectly classified as spam is a false positive.
+
+Memory Trick: Precision = How trustworthy are positive predictions?
+
+5. Recall
+
+Recall measures how many actual positives were successfully detected.
+
+Also called:
+
+Sensitivity
+True Positive Rate (TPR)
+Formula
+Recall=TPTP+FN\boxed{Recall=\frac{TP}{TP+FN}}
+Example
+Recall=4040+10Recall=\frac{40}{40+10} Recall=80%\boxed{Recall=80\%}
+Meaning
+
+Out of 50 patients who actually have the disease, 40 were identified.
+
+When Is Recall Important?
+
+When False Negatives are costly.
+
+Examples:
+
+Disease screening
+Fraud detection
+Safety-critical detection
+
+Memory Trick: Recall = How many actual positives did we find?
+
+6. F1-Score
+
+F1-Score combines Precision and Recall using their harmonic mean.
+
+Formula
+F1=2×Precision×RecallPrecision+Recall\boxed{F1=2\times\frac{Precision\times Recall}{Precision+Recall}}
+
+Alternative formula:
+
+F1=2TP2TP+FP+FN\boxed{F1=\frac{2TP}{2TP+FP+FN}}
+Example
+F1=2(40)2(40)+5+10F1=\frac{2(40)}{2(40)+5+10} =8095=\frac{80}{95} F1=84.21%\boxed{F1=84.21\%}
+When Is F1 Useful?
+
+When:
+
+Precision and Recall both matter.
+Classes are imbalanced.
+You want one score combining both metrics.
+
+F1 does not directly include True Negatives.
+
+7. Important Additional Metrics
+Specificity
+
+Measures how many actual negatives were correctly identified.
+
+Specificity=TNTN+FP\boxed{Specificity=\frac{TN}{TN+FP}}
+
+Example:
+
+Specificity=4545+5Specificity=\frac{45}{45+5} Specificity=90%\boxed{Specificity=90\%}
+False Positive Rate
+FPR=FPFP+TN\boxed{FPR=\frac{FP}{FP+TN}}
+
+It measures the proportion of actual negatives incorrectly classified as positive.
+
+ROC-AUC
+
+ROC stands for Receiver Operating Characteristic.
+
+The ROC curve plots:
+
+True Positive Rate
+False Positive Rate
+
+across classification thresholds.
+
+AUC summarizes the area under the ROC curve.
+
+Higher ROC-AUC generally indicates better ranking ability.
+
+For binary classification, an ROC-AUC of 0.5 corresponds to chance-level ranking.
+
+8. Complete Formula Table
+Metric	Formula	MeaningAccuracy	(TP + TN) / Total	Overall correctness
+Precision	TP / (TP + FP)	Correctness of predicted positives
+Recall	TP / (TP + FN)	Detection of actual positives
+F1	2PR / (P + R)	Balance of precision and recall
+Specificity	TN / (TN + FP)	Detection of actual negatives
+FPR	FP / (FP + TN)	Incorrect positive rate
+9. Python Revision
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    confusion_matrix
+)
+
+y_true = [1, 0, 1, 1, 0]
+y_pred = [1, 0, 0, 1, 1]
+
+print(confusion_matrix(y_true, y_pred))
+print(accuracy_score(y_true, y_pred))
+print(precision_score(y_true, y_pred))
+print(recall_score(y_true, y_pred))
+print(f1_score(y_true, y_pred))
+
+⭐ Important Exam Questions
+
+Q1. Which metric focuses on False Positives?
+
+Precision.
+
+Q2. Which metric focuses on False Negatives?
+
+Recall.
+
+Q3. When can Accuracy be misleading?
+
+When the dataset is imbalanced.
+
+Q4. What does F1-Score combine?
+
+Precision and Recall.
+
+Q5. What is another name for Recall?
+
+Sensitivity or True Positive Rate.
+
+✅ Topic 2: One-Minute Revision
+
+Accuracy measures overall correctness. Precision measures the reliability of positive predictions. Recall measures how many actual positives were detected. F1 combines Precision and Recall. Always examine the Confusion Matrix before choosing an evaluation metric.
+
+🟢 TOPIC 3: K-NEAREST NEIGHBORS (KNN)
+1. What Is KNN?
+
+K-Nearest Neighbors is a supervised learning algorithm that predicts an observation's class using nearby training observations.
+
+Example
+
+Suppose a new fruit must be classified as Apple or Orange.
+
+We select:
+
+K=5K=5
+
+The five nearest fruits are:
+
+Apple
+Apple
+Orange
+Apple
+Orange
+
+Count:
+
+Apple = 3
+Orange = 2
+
+Prediction = Apple
+
+This is called Majority Voting.
+
+2. What Does K Mean?
+
+K represents the number of nearest neighbors considered.
+
+Examples:
+
+K = 1 → One nearest neighbor
+K = 3 → Three nearest neighbors
+K = 5 → Five nearest neighbors
+
+K is a hyperparameter.
+
+It is selected before fitting the model, often using cross-validation.
+
+3. How Does KNN Work?
+
+Remember these five steps:
+
+Choose K.
+Calculate distances.
+Find K nearest training observations.
+Count their class labels.
+Predict the majority class.
+
+KNN = Distance + Nearest Neighbors + Voting
+
+4. Euclidean Distance
+
+Euclidean Distance measures straight-line distance.
+
+Formula
+
+For two points:
+
+A=(x1,y1)A=(x_1,y_1) B=(x2,y2)B=(x_2,y_2) d=(x2−x1)2+(y2−y1)2\boxed{d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}}
+Example
+A=(2,3)A=(2,3) B=(5,7)B=(5,7) d=(5−2)2+(7−3)2d=\sqrt{(5-2)^2+(7-3)^2} =9+16=\sqrt{9+16} d=5\boxed{d=5}
+5. Small K vs Large K
+Small K	Large KSensitive to noise	Less sensitive to individual noisy points
+More complex boundaries	Smoother boundaries
+Higher variance tendency	Lower variance tendency
+Overfitting risk	Underfitting risk
+Example
+
+K = 1:
+
+The model follows the closest training observation.
+
+K = 100:
+
+The model considers a much larger neighborhood.
+
+Important
+
+There is no universally best K.
+
+Use cross-validation to select it.
+
+6. Why Is Feature Scaling Important?
+
+KNN calculates distances.
+
+Suppose two features are:
+
+Age = 25
+Salary = 80,000
+
+Salary has a much larger numerical scale.
+
+Without scaling, salary differences may dominate distance calculations.
+
+Standardization Formula
+z=x−μσ\boxed{z=\frac{x-\mu}{\sigma}}
+
+Where:
+
+xx = Original value
+μ\mu = Mean
+σ\sigma = Standard deviation
+Min-Max Scaling
+x′=x−xminxmax−xmin\boxed{x'=\frac{x-x_{min}}{x_{max}-x_{min}}}
+
+Remember: KNN is distance-based, so feature scaling is generally important.
+
+7. Cross-Validation
+
+Cross-validation helps choose K.
+
+Example:
+
+K	Validation Accuracy1	82%
+3	88%
+5	91%
+7	89%
+
+Here, K = 5 performs best among the tested values.
+
+These are illustrative scores.
+
+For classification, stratified cross-validation is commonly used.
+
+8. Why Is KNN Called Lazy Learning?
+
+KNN does not learn a traditional set of coefficients during training.
+
+Instead, it stores training information and uses it during prediction.
+
+Therefore:
+
+Training is relatively simple.
+Prediction can be computationally expensive.
+9. Python Revision
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+
+X = [[1, 2], [2, 3], [3, 3], [6, 5], [7, 7]]
+y = [0, 0, 1, 1, 1]
+
+model = make_pipeline(
+    StandardScaler(),
+    KNeighborsClassifier(n_neighbors=3)
+)
+
+model.fit(X, y)
+
+print(model.predict([[3, 2]]))
+
+
+The pipeline applies feature scaling before KNN.
+
+10. Important Concepts
+Concept	MeaningK	Number of neighbors
+Euclidean Distance	Straight-line distance
+Majority Voting	Most frequent class wins
+Small K	More sensitive to noise
+Large K	Smoother predictions
+Scaling	Prevents large-scale features from dominating
+Cross-Validation	Helps select K
+Lazy Learning	Most computation occurs during prediction
+⭐ Important Exam Questions
+
+Q1. Is KNN supervised?
+
+Yes.
+
+Q2. What is K?
+
+Number of nearest neighbors.
+
+Q3. Why is scaling important?
+
+Because KNN uses distances.
+
+Q4. What happens when K is too small?
+
+Overfitting risk increases.
+
+Q5. Why is KNN called lazy learning?
+
+Because it stores training observations and performs much of its work during prediction.
+
+✅ Topic 3: One-Minute Revision
+
+KNN predicts using nearby training observations. It calculates distances, selects K neighbors, and uses majority voting for classification. Small K may overfit, while large K may underfit. Feature scaling and cross-validation are important.
+
+🟢 TOPIC 4: NAIVE BAYES
+1. What Is Naive Bayes?
+
+Naive Bayes is a supervised classification algorithm based on probability and Bayes' theorem.
+
+Example
+
+Suppose an email contains:
+
+"Win a free prize."
+
+We want to classify it as:
+
+Spam
+Not Spam
+
+Naive Bayes uses probabilities learned from previous emails.
+
+It estimates which class is more likely given the words in the email.
+
+2. Basic Probability
+
+Probability measures how likely an event is.
+
+For equally likely outcomes:
+
+P(A)=Favorable outcomesTotal outcomes\boxed{P(A)=\frac{\text{Favorable outcomes}}{\text{Total outcomes}}}
+
+Example:
+
+A fair coin has two outcomes.
+
+P(Head)=12=0.5P(Head)=\frac12=0.5
+
+Probability lies between 0 and 1.
+
+3. Conditional Probability
+
+Conditional probability means:
+
+Probability of A, given that B has happened.
+
+Formula:
+
+P(A∣B)=P(A∩B)P(B)\boxed{P(A\mid B)=\frac{P(A\cap B)}{P(B)}}
+
+Here:
+
+P(A∣B)P(A\mid B)
+
+is read as:
+
+"Probability of A given B."
+
+Example
+
+Suppose:
+
+40 students play cricket.
+10 cricket players wear glasses.
+
+Then:
+
+P(Glasses∣Cricket)=1040P(Glasses\mid Cricket)=\frac{10}{40} 0.25\boxed{0.25}
+4. Bayes' Theorem
+
+This is the most important formula.
+
+P(A∣B)=P(B∣A)P(A)P(B)\boxed{P(A\mid B)=\frac{P(B\mid A)P(A)}{P(B)}}
+Important Terms
+Term	Name	MeaningP(A)	Prior	Probability before new evidence
+P(B|A)	Likelihood	Probability of evidence given A
+P(B)	Evidence	Overall probability of evidence
+P(A|B)	Posterior	Updated probability after evidence
+Memory Trick
+Posterior=Likelihood×PriorEvidence\boxed{Posterior=\frac{Likelihood\times Prior}{Evidence}}
+5. Numerical Example
+
+Suppose:
+
+P(Spam)=0.4P(Spam)=0.4 P(Free∣Spam)=0.75P(Free\mid Spam)=0.75 P(Free)=0.4P(Free)=0.4
+
+Calculate:
+
+P(Spam∣Free)P(Spam\mid Free)
+
+Apply Bayes' theorem:
+
+P(Spam∣Free)=0.75×0.40.4P(Spam\mid Free)=\frac{0.75\times0.4}{0.4} P(Spam∣Free)=0.75\boxed{P(Spam\mid Free)=0.75}
+Meaning
+
+Given that an email contains "Free," the estimated probability that it is spam is 75%.
+
+6. Why Is It Called Naive?
+
+Naive Bayes assumes features are conditionally independent given the class.
+
+Example:
+
+An email contains:
+
+Free
+Win
+Prize
+
+In reality, these words may be related.
+
+But Naive Bayes assumes their occurrences are independent once the class is known.
+
+Therefore:
+
+P(X1,X2∣C)=P(X1∣C)P(X2∣C)P(X_1,X_2\mid C) = P(X_1\mid C)P(X_2\mid C)
+
+under the Naive Bayes assumption.
+
+This simplifies calculations.
+
+7. How Does Naive Bayes Predict?
+
+Suppose an email contains "Free Prize."
+
+We calculate a score for each class.
+
+Spam Score
+Score(Spam)=P(Spam)×P(Free∣Spam)×P(Prize∣Spam)Score(Spam)=P(Spam)\times P(Free\mid Spam)\times P(Prize\mid Spam)
+Not-Spam Score
+Score(NotSpam)=P(NotSpam)×P(Free∣NotSpam)×P(Prize∣NotSpam)Score(NotSpam)=P(NotSpam)\times P(Free\mid NotSpam)\times P(Prize\mid NotSpam)
+
+The class with the larger score is predicted.
+
+To obtain normalized probabilities, divide each score by the sum of all class scores.
+
+8. Types of Naive Bayes
+Type	Used For	ExampleGaussian NB	Continuous numerical features	Age, height, salary
+Multinomial NB	Count-based features	Word counts
+Bernoulli NB	Binary features	Word present or absent
+Gaussian Naive Bayes
+
+Assumes each numerical feature follows a Gaussian distribution within each class.
+
+Multinomial Naive Bayes
+
+Often used in text classification.
+
+Bernoulli Naive Bayes
+
+Works with binary features.
+
+Example:
+
+Word present = 1
+Word absent = 0
+9. Laplace Smoothing
+
+Suppose a word never appears in one class.
+
+Its estimated probability may become zero.
+
+Multiplying by zero makes the entire class likelihood zero.
+
+Laplace smoothing helps prevent this.
+
+For a multinomial word model:
+
+P(word∣class)=Count(word,class)+1TotalWords(class)+V\boxed{P(word\mid class)=\frac{Count(word,class)+1}{TotalWords(class)+V}}
+
+Where:
+
+VV = Vocabulary size
+Remember
+
+Laplace Smoothing = Helps avoid zero probabilities.
+
+10. Python Revision
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.feature_extraction.text import CountVectorizer
+
+emails = [
+    "win free prize",
+    "free money",
+    "meeting tomorrow",
+    "project discussion"
+]
+
+labels = [1, 1, 0, 0]
+
+vectorizer = CountVectorizer()
+
+X = vectorizer.fit_transform(emails)
+
+model = MultinomialNB()
+
+model.fit(X, labels)
+
+new_email = vectorizer.transform(["free prize"])
+
+print(model.predict(new_email))
+
+⭐ Important Exam Questions
+
+Q1. Which theorem is used in Naive Bayes?
+
+Bayes' theorem.
+
+Q2. Why is it called Naive?
+
+Because it assumes conditional independence of features given the class.
+
+Q3. Which type is commonly used for word counts?
+
+Multinomial Naive Bayes.
+
+Q4. What is posterior probability?
+
+Updated probability after considering evidence.
+
+Q5. Why do we use Laplace smoothing?
+
+To help avoid zero probabilities.
+
+✅ Topic 4: One-Minute Revision
+
+Naive Bayes is a probability-based classifier. It uses Bayes' theorem to calculate class probabilities. It assumes features are conditionally independent given the class. Gaussian NB handles continuous features, Multinomial NB handles counts, and Bernoulli NB handles binary features.
+
+🟢 TOPIC 5: DECISION TREES
+1. What Is a Decision Tree?
+
+A Decision Tree is a supervised machine learning algorithm that predicts using a sequence of questions.
+
+It works like IF–ELSE statements.
+
+Example
+              Is it raining?
+              /            \
+            Yes             No
+            /                \
+        Don't Play        Is it hot?
+                          /       \
+                        Yes        No
+                        /           \
+                   Don't Play       Play
+
+
+The algorithm learns these decision rules from training data.
+
+2. Parts of a Decision Tree
+Component	MeaningRoot Node	Starting point
+Decision Node	Asks a question
+Branch	Outcome of a question
+Leaf Node	Final prediction
+Example
+
+Root Node:
+
+Is Salary > 50000?
+
+
+Decision Node:
+
+Is Age > 30?
+
+
+Leaf Node:
+
+Customer Will Churn
+
+3. How Does a Decision Tree Choose Splits?
+
+The algorithm tries to divide observations into groups that are more homogeneous in their target labels.
+
+Two common impurity measures are:
+
+Entropy
+Gini Impurity
+
+For entropy-based trees, Information Gain measures how much uncertainty is reduced.
+
+4. Entropy
+
+Entropy measures uncertainty or class mixture.
+
+Formula
+H(S)=−∑i=1Cpilog⁡2(pi)\boxed{H(S)=-\sum_{i=1}^{C}p_i\log_2(p_i)}
+
+For binary classification:
+
+H(S)=−p1log⁡2(p1)−p0log⁡2(p0)\boxed{H(S)=-p_1\log_2(p_1)-p_0\log_2(p_0)}
+Example 1: Pure Node
+
+Suppose:
+
+Yes = 10
+No = 0
+
+Then:
+
+Entropy=0\boxed{Entropy=0}
+Example 2: Balanced Node
+
+Suppose:
+
+Yes = 5
+No = 5
+
+Then:
+
+H(S)=−0.5log⁡2(0.5)−0.5log⁡2(0.5)H(S)=-0.5\log_2(0.5)-0.5\log_2(0.5) Entropy=1\boxed{Entropy=1}
+Remember
+
+For binary classification:
+
+Entropy = 0 → Completely pure
+Entropy = 1 → Maximum class uncertainty
+5. Gini Impurity
+
+Gini Impurity measures class mixture.
+
+Formula
+Gini=1−∑i=1Cpi2\boxed{Gini=1-\sum_{i=1}^{C}p_i^2}
+
+For binary classification:
+
+Gini=1−p12−p02\boxed{Gini=1-p_1^2-p_0^2}
+Example
+
+Suppose:
+
+Yes = 5
+No = 5
+
+Then:
+
+Gini=1−(0.5)2−(0.5)2Gini=1-(0.5)^2-(0.5)^2 =1−0.25−0.25=1-0.25-0.25 Gini=0.5\boxed{Gini=0.5}
+Remember
+
+For binary classification:
+
+Gini = 0 → Pure node
+Gini = 0.5 → Maximum impurity
+6. Information Gain
+
+Information Gain measures the reduction in entropy after splitting.
+
+Formula
+IG=ParentEntropy−WeightedChildEntropy\boxed{IG=ParentEntropy-WeightedChildEntropy}
+Example
+
+Suppose:
+
+ParentEntropy=0.95ParentEntropy=0.95 WeightedChildEntropy=0.40WeightedChildEntropy=0.40
+
+Then:
+
+IG=0.95−0.40IG=0.95-0.40 IG=0.55\boxed{IG=0.55}
+Meaning
+
+The split reduced entropy by 0.55 bits.
+
+A higher Information Gain indicates a greater reduction in entropy.
+
+7. Why Weighted Entropy?
+
+Suppose a split produces:
+
+Group A = 80 observations
+Group B = 20 observations
+
+We should not give both groups equal importance.
+
+Instead:
+
+WeightedEntropy=80100H(A)+20100H(B)WeightedEntropy= \frac{80}{100}H(A)+\frac{20}{100}H(B)
+
+The larger group receives more weight.
+
+8. Entropy vs Gini
+Entropy	GiniMeasures class uncertainty	Measures class impurity
+Uses logarithms	Uses squared probabilities
+Binary maximum = 1	Binary maximum = 0.5
+Pure node = 0	Pure node = 0
+Used for entropy-based splitting	Used for Gini-based splitting
+
+Both help select useful splits.
+
+9. Overfitting in Decision Trees
+
+A Decision Tree may grow too deep and memorize training-specific patterns.
+
+Example:
+
+Dataset	AccuracyTraining	99%
+Testing	65%
+
+This large gap suggests possible overfitting.
+
+How to Control It
+Parameter	Purposemax_depth	Limits tree depth
+min_samples_split	Minimum samples required to split
+min_samples_leaf	Minimum samples required in a leaf
+ccp_alpha	Controls cost-complexity pruning
+10. Pruning
+
+Pruning reduces unnecessary branches.
+
+Pre-Pruning
+
+Restrict growth before the tree becomes too complex.
+
+Example:
+
+max_depth=3
+
+Post-Pruning
+
+Grow a tree and then remove branches that do not provide sufficient benefit.
+
+Memory Trick: Pruning = Cutting unnecessary branches.
+
+11. Python Revision
+from sklearn.tree import DecisionTreeClassifier
+
+X = [
+    [1, 40],
+    [2, 50],
+    [3, 60],
+    [4, 70],
+    [5, 80],
+    [6, 90]
+]
+
+y = [0, 0, 0, 1, 1, 1]
+
+model = DecisionTreeClassifier(
+    criterion="entropy",
+    max_depth=3,
+    random_state=42
+)
+
+model.fit(X, y)
+
+print(model.predict([[5, 85]]))
+
+⭐ Important Exam Questions
+
+Q1. What is the root node?
+
+The starting node of the tree.
+
+Q2. What is entropy?
+
+A measure of class uncertainty.
+
+Q3. What is Information Gain?
+
+Reduction in entropy after a split.
+
+Q4. What is pruning?
+
+Reducing unnecessary branches to control complexity.
+
+Q5. Does a Decision Tree usually require feature scaling?
+
+No. Standard decision trees generally do not require scaling.
+
+✅ Topic 5: One-Minute Revision
+
+Decision Trees learn IF–ELSE rules. They split data into smaller groups using feature-based questions. Entropy and Gini measure impurity. Information Gain measures entropy reduction. Deep trees can overfit, so pruning and depth limits help control complexity.
+
+🟢 TOPIC 6: SUPPORT VECTOR MACHINE (SVM)
+1. What Is SVM?
+
+Support Vector Machine is a supervised learning algorithm that finds a decision boundary separating classes.
+
+Its main idea is to find a boundary with a large margin.
+
+Example
+
+Imagine:
+
+Red points on one side.
+Blue points on the other side.
+
+SVM tries to find a separating line that leaves as much space as possible between the classes, subject to its constraints.
+
+2. Hyperplane
+
+A hyperplane is the decision boundary.
+
+Number of Features	Boundary2	Line
+3	Plane
+More than 3	Hyperplane
+Formula
+wTx+b=0\boxed{w^Tx+b=0}
+
+Where:
+
+ww = Weight vector
+xx = Input features
+bb = Bias
+Example
+2x1+x2−6=02x_1+x_2-6=0
+
+For:
+
+x=(2,3)x=(2,3) f(x)=2(2)+3−6f(x)=2(2)+3-6 f(x)=1\boxed{f(x)=1}
+
+Since the score is positive, the point lies on the positive side of the hyperplane.
+
+3. Margin
+
+Margin represents the separation between the decision boundary and nearby training observations.
+
+For a canonically scaled linear SVM, the full margin width is:
+
+MarginWidth=2∥w∥\boxed{MarginWidth=\frac{2}{\|w\|}}
+
+Where:
+
+∥w∥=w12+w22+⋯+wn2\|w\|=\sqrt{w_1^2+w_2^2+\cdots+w_n^2}
+Example
+
+Suppose:
+
+w=(3,4)w=(3,4)
+
+Then:
+
+∥w∥=32+42\|w\|=\sqrt{3^2+4^2} =5=5
+
+Therefore:
+
+MarginWidth=25MarginWidth=\frac25 0.4\boxed{0.4}
+4. Support Vectors
+
+Support vectors are training observations that help determine the SVM decision boundary.
+
+In a hard-margin linear SVM, they lie on the supporting margin boundaries.
+
+In a soft-margin SVM, they may also lie inside the margin or be misclassified.
+
+Remember
+
+Support Vectors = Important training observations defining the boundary.
+
+5. Hard Margin vs Soft Margin
+Hard Margin	Soft MarginNo margin violations allowed	Allows margin violations
+Requires separable training data	Handles overlapping classes
+Sensitive to outliers	More flexible
+No violation trade-off	Uses C parameter
+
+Soft Margin SVM is commonly more practical for noisy datasets.
+
+6. C Parameter
+
+C controls the penalty for margin violations.
+
+Small C
+Stronger regularization
+Greater tolerance for margin violations
+Often smoother boundary
+May underfit
+Large C
+Weaker regularization
+Stronger penalty for violations
+Tries harder to fit training observations
+May overfit
+Memory Trick
+
+Small C = More tolerance
+
+Large C = Less tolerance
+
+7. Linear vs Nonlinear SVM
+Linear SVM
+
+Uses a linear decision boundary.
+
+Nonlinear SVM
+
+Can create nonlinear decision boundaries using kernels.
+
+Example:
+
+If one class forms a circle surrounded by another class, a straight line cannot separate them perfectly.
+
+A nonlinear kernel can help.
+
+8. Kernel Trick
+
+The kernel trick allows SVM to learn nonlinear patterns by computing similarities corresponding to an implicit feature transformation.
+
+Types of Kernels
+Kernel	Formula	Main UseLinear	xTzx^Tz	Linear relationships
+Polynomial	(γxTz+r)d(\gamma x^Tz+r)^d	Polynomial relationships
+RBF	e−γ∥x−z∥2e^{-\gamma\|x-z\|^2}	Nonlinear distance-based relationships
+9. Gamma Parameter
+
+Gamma controls how quickly RBF similarity decreases with distance.
+
+Small Gamma
+Broad influence of training points
+Often smoother boundary
+May underfit
+Large Gamma
+Localized influence
+Potentially complex boundary
+May overfit
+Important Difference
+C	GammaControls penalty for margin violations	Controls kernel similarity decay
+Small C = Stronger regularization	Small gamma = Broader influence
+Large C = Weaker regularization	Large gamma = More localized influence
+10. RBF Numerical Example
+
+Formula:
+
+K(x,z)=e−γ∥x−z∥2\boxed{K(x,z)=e^{-\gamma\|x-z\|^2}}
+
+Suppose:
+
+x=(1,2)x=(1,2) z=(3,4)z=(3,4) γ=0.5\gamma=0.5
+
+Squared distance:
+
+∥x−z∥2=(1−3)2+(2−4)2\|x-z\|^2=(1-3)^2+(2-4)^2 =4+4=8=4+4=8
+
+Apply formula:
+
+K(x,z)=e−0.5(8)K(x,z)=e^{-0.5(8)} =e−4=e^{-4} K(x,z)≈0.0183\boxed{K(x,z)\approx0.0183}
+
+This indicates low RBF similarity for the selected gamma.
+
+11. Feature Scaling
+
+SVM is sensitive to feature scales.
+
+Example:
+
+Age = 25
+Salary = 80,000
+
+The difference in numerical scales can affect the learned boundary.
+
+Therefore, scaling is generally recommended.
+
+12. Python Revision
+from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+
+X = [
+    [1, 40],
+    [2, 50],
+    [3, 60],
+    [4, 70],
+    [5, 80],
+    [6, 90]
+]
+
+y = [0, 0, 0, 1, 1, 1]
+
+model = make_pipeline(
+    StandardScaler(),
+    SVC(kernel="rbf", C=1.0, gamma="scale")
+)
+
+model.fit(X, y)
+
+print(model.predict([[5, 85]]))
+
+⭐ Important Exam Questions
+
+Q1. What is the main objective of SVM?
+
+To find a suitable maximum-margin decision boundary while controlling violations.
+
+Q2. What are support vectors?
+
+Training observations that help determine the boundary.
+
+Q3. What does C control?
+
+Penalty for margin violations.
+
+Q4. What does gamma control?
+
+Distance-based influence in kernels such as RBF.
+
+Q5. Which kernel is commonly used for nonlinear classification?
+
+RBF.
+
+✅ Topic 6: One-Minute Revision
+
+SVM finds a decision boundary with a large margin. Support vectors determine the boundary. Hard-margin SVM does not allow violations, while soft-margin SVM does. C controls the penalty for violations, gamma controls RBF similarity decay, and kernels allow nonlinear classification.
+
+🏆 COMPLETE COMPARISON OF ALL FIVE CLASSIFICATION ALGORITHMS
+
+This is one of the most important tables for exams and interviews.
+
+Feature	Logistic Regression	KNN	Naive Bayes	Decision Tree	SVMLearning Type	Supervised	Supervised	Supervised	Supervised	Supervised
+Main Idea	Probability using sigmoid	Nearest neighbors	Bayes' theorem	IF–ELSE rules	Maximum-margin boundary
+Classification Method	Threshold probability	Majority voting	Highest class probability	Follow tree branches	Decision function
+Important Concept	Log Loss	Distance	Conditional probability	Entropy/Gini	Margin
+Important Hyperparameter	C	K	Smoothing	max_depth	C, gamma
+Feature Scaling	Often recommended	Generally important	Depends on variant	Usually unnecessary	Generally important
+Can Model Nonlinear Patterns?	With feature engineering	Yes	Depends on assumptions/features	Yes	Yes, using kernels
+Main Weakness	Linear log-odds assumption	Sensitive to scaling and dimensionality	Independence assumption	Overfitting	Tuning and computational cost
+🎯 WHICH ALGORITHM SHOULD YOU USE?
+
+This is useful for real projects and exam questions.
+
+Situation	Algorithm to Consider	Why?Need interpretable probabilities	Logistic Regression	Simple probabilistic baseline
+Nearby observations have similar labels	KNN	Uses local neighborhoods
+Spam detection using word counts	Multinomial Naive Bayes	Efficient for text counts
+Need understandable decision rules	Decision Tree	Produces IF–ELSE rules
+Need nonlinear classification	RBF SVM	Models nonlinear boundaries
+Need a simple linear classifier	Logistic Regression or Linear SVM	Both learn linear boundaries
+Features have different numerical scales	KNN/SVM with scaling	Distance and margin calculations are scale-sensitive
+
+Important: These are starting recommendations, not guarantees. Compare models using suitable validation metrics.
+
+📌 ALL IMPORTANT FORMULAS — ONE-PAGE REVISION
+Topic 1: Logistic Regression
+
+Linear Score
+
+z=wTx+bz=w^Tx+b
+
+Sigmoid
+
+σ(z)=11+e−z\boxed{\sigma(z)=\frac{1}{1+e^{-z}}}
+
+Log Loss
+
+L=−[ylog⁡(p)+(1−y)log⁡(1−p)]\boxed{L=-[y\log(p)+(1-y)\log(1-p)]}
+Topic 2: Classification Metrics
+
+Accuracy
+
+TP+TNTP+TN+FP+FN\boxed{\frac{TP+TN}{TP+TN+FP+FN}}
+
+Precision
+
+TPTP+FP\boxed{\frac{TP}{TP+FP}}
+
+Recall
+
+TPTP+FN\boxed{\frac{TP}{TP+FN}}
+
+F1-Score
+
+2PRP+R\boxed{\frac{2PR}{P+R}}
+
+Specificity
+
+TNTN+FP\boxed{\frac{TN}{TN+FP}}
+Topic 3: KNN
+
+Euclidean Distance
+
+d=∑i=1n(xi−yi)2\boxed{d=\sqrt{\sum_{i=1}^{n}(x_i-y_i)^2}}
+
+Standardization
+
+z=x−μσ\boxed{z=\frac{x-\mu}{\sigma}}
+
+Min-Max Scaling
+
+x′=x−xminxmax−xmin\boxed{x'=\frac{x-x_{min}}{x_{max}-x_{min}}}
+Topic 4: Naive Bayes
+
+Conditional Probability
+
+P(A∣B)=P(A∩B)P(B)\boxed{P(A\mid B)=\frac{P(A\cap B)}{P(B)}}
+
+Bayes' Theorem
+
+P(A∣B)=P(B∣A)P(A)P(B)\boxed{P(A\mid B)=\frac{P(B\mid A)P(A)}{P(B)}}
+
+Naive Bayes Class Score
+
+Score(C)=P(C)∏iP(Xi∣C)\boxed{Score(C)=P(C)\prod_iP(X_i\mid C)}
+Topic 5: Decision Trees
+
+Entropy
+
+H(S)=−∑ipilog⁡2(pi)\boxed{H(S)=-\sum_i p_i\log_2(p_i)}
+
+Gini Impurity
+
+Gini=1−∑ipi2\boxed{Gini=1-\sum_i p_i^2}
+
+Information Gain
+
+IG=ParentEntropy−WeightedChildEntropy\boxed{IG=ParentEntropy-WeightedChildEntropy}
+Topic 6: SVM
+
+Hyperplane
+
+wTx+b=0\boxed{w^Tx+b=0}
+
+Full Margin Width
+
+2∥w∥\boxed{\frac{2}{\|w\|}}
+
+RBF Kernel
+
+K(x,z)=e−γ∥x−z∥2\boxed{K(x,z)=e^{-\gamma\|x-z\|^2}}
+🧠 MOST IMPORTANT CONCEPTUAL DIFFERENCES
+
+These are especially useful for multiple-choice questions.
+
+Question	AnswerWhich algorithm uses sigmoid?	Logistic Regression
+Which algorithm uses Log Loss?	Logistic Regression
+Which algorithm uses Euclidean Distance?	KNN
+Which algorithm uses majority voting?	KNN
+Which algorithm uses Bayes' theorem?	Naive Bayes
+Which algorithm assumes conditional independence?	Naive Bayes
+Which algorithm uses Entropy?	Decision Tree
+Which algorithm uses Gini Impurity?	Decision Tree
+Which algorithm uses Information Gain?	Decision Tree
+Which algorithm uses a maximum-margin boundary?	SVM
+Which algorithm uses support vectors?	SVM
+Which algorithm uses kernels?	SVM
+Which metric focuses on False Positives?	Precision
+Which metric focuses on False Negatives?	Recall
+Which metric combines Precision and Recall?	F1-Score
+Which algorithm is called lazy learning?	KNN
+Which algorithm generally does not require feature scaling?	Decision Tree
+Which algorithms commonly benefit from feature scaling?	KNN and SVM
+📝 FINAL SELF-ASSESSMENT — 15 IMPORTANT MCQs
+
+Try answering these without checking the revision notes.
+
+Q1.
+
+Which function is used in binary Logistic Regression?
+
+A. ReLU
+ B. Sigmoid
+ C. Softmax only
+ D. Tanh
+
+Q2.
+
+What is the output of sigmoid when z = 0?
+
+A. 0
+ B. 0.25
+ C. 0.5
+ D. 1
+
+Q3.
+
+Which metric is most directly affected by False Negatives?
+
+A. Precision
+ B. Recall
+ C. Specificity
+ D. True Negative Rate
+
+Q4.
+
+What does K represent in KNN?
+
+A. Number of features
+ B. Number of classes
+ C. Number of nearest neighbors
+ D. Number of training epochs
+
+Q5.
+
+Which algorithm is commonly called lazy learning?
+
+A. SVM
+ B. KNN
+ C. Logistic Regression
+ D. Decision Tree
+
+Q6.
+
+Why is feature scaling important in KNN?
+
+A. To calculate entropy
+ B. Because KNN uses distances
+ C. To calculate Bayes' theorem
+ D. To reduce class labels
+
+Q7.
+
+Which theorem forms the foundation of Naive Bayes?
+
+A. Pythagorean theorem
+ B. Bayes' theorem
+ C. Central Limit Theorem
+ D. No Free Lunch theorem
+
+Q8.
+
+Why is Naive Bayes called naive?
+
+A. It cannot classify data
+ B. It assumes conditional feature independence
+ C. It uses no training data
+ D. It always predicts the majority class
+
+Q9.
+
+Which Naive Bayes variant is commonly used for word counts?
+
+A. Gaussian
+ B. Bernoulli
+ C. Multinomial
+ D. Linear
+
+Q10.
+
+What is the entropy of a completely pure node?
+
+A. 0
+ B. 0.5
+ C. 1
+ D. 2
+
+Q11.
+
+What does Information Gain measure?
+
+A. Increase in model size
+ B. Reduction in entropy
+ C. Number of features
+ D. Training accuracy
+
+Q12.
+
+What is pruning in Decision Trees?
+
+A. Increasing tree depth
+ B. Removing unnecessary branches
+ C. Adding more features
+ D. Applying sigmoid
+
+Q13.
+
+What is the main objective of a hard-margin SVM?
+
+A. Minimize the number of neighbors
+ B. Find a maximum-margin separating hyperplane
+ C. Calculate class probabilities
+ D. Minimize entropy
+
+Q14.
+
+What does a large C generally mean in SVM?
+
+A. Stronger penalty for margin violations
+ B. Weaker penalty for margin violations
+ C. Larger K
+ D. Smaller training dataset
+
+Q15.
+
+Which kernel is commonly used for nonlinear SVM classification?
+
+A. Linear
+ B. RBF
+ C. Sigmoid activation
+ D. Entropy
+
+✅ Answer Key
+Question	AnswerQ1	B — Sigmoid
+Q2	C — 0.5
+Q3	B — Recall
+Q4	C — Number of nearest neighbors
+Q5	B — KNN
+Q6	B — Because KNN uses distances
+Q7	B — Bayes' theorem
+Q8	B — Conditional feature independence
+Q9	C — Multinomial
+Q10	A — 0
+Q11	B — Reduction in entropy
+Q12	B — Removing unnecessary branches
+Q13	B — Maximum-margin separating hyperplane
+Q14	A — Stronger penalty for violations
+Q15	B — RBF
+🏁 FINAL 30-SECOND REVISION
+
+Aryan, if you return to these notes after a month and remember only a few things, remember these:
+
+Topic	One Sentence to RememberTopic 1: Logistic Regression	Uses sigmoid to predict class probabilities and Log Loss for training.
+Topic 2: Evaluation Metrics	Accuracy measures overall correctness; Precision checks predicted positives; Recall finds actual positives; F1 balances both.
+Topic 3: KNN	Classifies using the majority class among K nearest neighbors.
+Topic 4: Naive Bayes	Uses Bayes' theorem and assumes conditional feature independence.
+Topic 5: Decision Trees	Learns IF–ELSE rules using impurity-based splits such as Entropy or Gini.
+Topic 6: SVM	Finds a suitable maximum-margin boundary using support vectors and, when needed, kernels.
+🎯 Your Classification Learning Status
+
+6 out of 6 topics covered.
+
+You now have a structured revision reference containing the definitions, formulas, worked examples, Python implementations, key differences, and exam questions for all six topics.
+
+Best revision method: Read the one-minute summaries first, revise the formula sheet second, and then solve the 15 MCQs without looking at the answers.
